@@ -16,3 +16,24 @@ jobs:
 
       - name: Create Resource Group
         run: az group create --name testing-action-rg-yml --location eastus
+name: Azure Deployment
+
+on: [push]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Create Resource Group
+        run: az group create --name testing-action-rg-yml --location eastus
+
+      - name: Delete Resource Group
+        run: az group delete --name testing-action-rg-yml --yes --no-wait
