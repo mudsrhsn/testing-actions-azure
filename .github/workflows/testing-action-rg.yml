@@ -17,5 +17,5 @@ jobs:
       - name: Create Resource Group
         run: az group create --name testing-action-rg-yml --location eastus
 
-      - name: Delete Resource Group
-        run: az group delete --name testing-action-rg-yml --yes --no-wait
+  #    - name: Delete Resource Group
+  #      run: az group delete --name testing-action-rg-yml --yes --no-wait
